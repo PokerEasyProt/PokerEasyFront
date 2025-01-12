@@ -1,0 +1,41 @@
+.TCform{
+    background-color: rgb(27,27,27);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    width: 1100px;
+    justify-content: space-around;
+    box-shadow: 0px 0px 2px  rgb(255, 222, 74);
+    animation: pulse 1s infinite alternate;
+    flex-wrap: wrap;
+
+    h2{
+        font-size: 35px;
+    }
+    .TCbutton{
+        margin-top: 30px;
+        width: 100%;
+        button{
+            background-color: rgb(72,72,72);
+            width: 200px;
+        }
+    }
+}
+
+.TCnames >input, .TCnames > p, .TCrules >input, .TCrules >p{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: start;
+
+}
+
+#BTadd{
+    display: flex;
+    width: 180px;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(72,72,72);
+}
+

@@ -1,0 +1,55 @@
+.TeamView{
+    border: solid 2px white;
+    display: flex;
+    width: 1400px;
+    margin-top: 50px;
+    left: 0;
+    height: 100%;
+}
+
+.leftTV{
+    width: 50%;
+    height: 650px;
+
+    display: flex;
+    flex-wrap: wrap;
+    img{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+
+    border: solid 2px red ;
+    .upTV{
+        align-items: center;
+        margin: 10px;
+        display: flex;
+        justify-content: start;
+        width: 100%;
+        height: 45%;
+        border: solid 2px white;
+        p{
+            max-width: 400px;
+        }
+    }
+    .downTV{
+        width: 100%;
+        height: 55%;
+        border: solid 2px white;
+        text-align: start;
+
+    }
+}
+
+.rightTV{
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid green;
+    width: 50%;
+
+    .flutterTV{
+        border: blue solid 2px;
+        height: 30%;
+        width: 100%;
+    }
+}
