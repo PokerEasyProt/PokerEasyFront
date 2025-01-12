@@ -13,7 +13,7 @@ function Cadastro() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/cadastro2'); 
+    navigate('/Home'); 
   };
 
   return (

@@ -24,7 +24,7 @@ function App() {
 
         {/* //player route */}
         <Route path='/homep' Component={HomePlayer}/>
-        <Route path='*' Component={NotFound}/>
+        <Route path='*' Component={Cadastro}/>
       </Routes>
     </BrowserRouter>
 )

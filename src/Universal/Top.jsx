@@ -1,5 +1,6 @@
 import './Top.css'
 import Adan from '../imgs/adan.png'
+import Icon from '../imgs/icon.png'
 
 function Top(){
     return(
@@ -11,7 +12,7 @@ function Top(){
                     <button>Solicitações</button>
                     <button><i class="bi bi-bell-fill"></i></button>
                     <div className='TopIcon'>
-                        <img src={Adan} width={55} alt="icone de perfil" />
+                        <img src={Icon} width={55} height={55} alt="icone de perfil" />
                     </div>
                 </div>
         </header>
