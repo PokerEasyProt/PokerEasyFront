@@ -18,11 +18,14 @@
 
 .LoginInputs{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     input{
-        width: ;
+        width: 100%;
     }
     p{
+        text-align: start;
         width: 100%;
     }
 }

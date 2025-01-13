@@ -13,6 +13,8 @@ function Login(){
                     <p>Senha</p>
                     <input type="text" />
                 </div>
+                <p>Não tem uma conta ainda? <a href="/cadastro">Cadatre-se agora mesmo</a></p>
+                
             </div>
         </div>
     )
