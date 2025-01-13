@@ -1,0 +1,28 @@
+.Login{
+    margin-top: 60px;
+    flex-wrap: wrap;
+
+    background-color: rgb(27, 27, 27);
+    padding: 5px 30px 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px  rgb(255, 222, 74);
+    animation: pulse 1s infinite alternate;
+    button{
+        margin: 20px;
+        background-color: rgb(72, 72, 72);
+    }
+
+    justify-content: start;
+}
+
+
+.LoginInputs{
+    display: flex;
+
+    input{
+        width: ;
+    }
+    p{
+        width: 100%;
+    }
+}

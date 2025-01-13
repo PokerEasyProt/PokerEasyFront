@@ -7,6 +7,7 @@ import Home from './Manager/Home.jsx';
 import HomePlayer from './Player/HomePlayer.jsx';
 import Teamcreate from './Manager/Teamcreate.jsx'
 import TeamView from './Manager/TeamView.jsx'
+import Login from './Cadastro/Login/Login.jsx'
 
 function App() {
   return(
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         {/* //General route */}
         <Route path='/cadastro' Component={Cadastro}/>
+        <Route path='/login' Component={Login}/>
 
 
         {/* //manager route */}
