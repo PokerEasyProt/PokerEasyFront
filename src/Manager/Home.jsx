@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import Top from "../Universal/Top";
 import Nav from '../Universal/Nav';
 import './Home.css';
 import SelectTeam from '../Universal/SelectTeam';
+
+import { UserContext } from "../../context/userContext"
 
 function Home(){
     const navigate = useNavigate();
@@ -16,11 +18,14 @@ function Home(){
         navigate('/teamcreate');
     };
     
-    console.log(team)
+
+
+    const {user} = useContext(UserContext)
     return(
         <div>
             <Nav/>
             <Top/>
+            {!!user && (<h1 className='hello'>Olá {user.name}</h1>)}
             <div className="gridT">
                 {team ? (
                     <div><SelectTeam/>

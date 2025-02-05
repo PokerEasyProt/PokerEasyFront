@@ -3,50 +3,50 @@ import './Nav.css'
 function Nav(){
     return(
         <nav>
-                    <div class="click">
-                        <i class="bi bi-arrow-bar-right" id="exp"></i>
+                    <div className="click">
+                        <i className="bi bi-arrow-bar-right" id="exp"></i>
                     </div>
                     <ul>
-                        <li class="abas">
+                        <li className="abas">
                             <a href="/">
-                            <span class="icon"><i class="bi bi-house"></i></span>
-                            <span class="text">Home</span>
+                            <span className="icon"><i className="bi bi-house"></i></span>
+                            <span className="text">Home</span>
                             </a>
                         </li>
-                        <li class="abas">
+                        <li className="abas">
                             <a href="/perfil">
-                            <span class="icon"><i class="bi bi-person-square"></i></span>
-                            <span class="text">Perfil</span>
+                            <span className="icon"><i className="bi bi-person-square"></i></span>
+                            <span className="text">Perfil</span>
                             </a>
                         </li>
-                        <li class="abas">
+                        <li className="abas">
                             <a href="/score">
-                            <span class="icon"><i class="bi bi-graph-up-arrow"></i></span>
-                            <span class="text">Meu_Desepenho</span>
+                            <span className="icon"><i className="bi bi-graph-up-arrow"></i></span>
+                            <span className="text">Meu_Desepenho</span>
                             </a>
                         </li>
-                        <li class="abas">
+                        <li className="abas">
                             <a href="/team">
-                            <span class="icon"><i class="bi bi-people-fill"></i></span>
-                            <span class="text">Time</span>
+                            <span className="icon"><i className="bi bi-people-fill"></i></span>
+                            <span className="text">Time</span>
                             </a>
                         </li>
-                        <li class="abas">
+                        <li className="abas">
                             <a href="/report">
-                            <span class="icon"><i class="bi bi-arrow-return-right"></i></span>
-                            <span class="text">Reportar</span>
+                            <span className="icon"><i className="bi bi-arrow-return-right"></i></span>
+                            <span className="text">Reportar</span>
                             </a>
                         </li>
-                        <li class="abas">
+                        <li className="abas">
                             <a href="/ticket">
-                            <span class="icon"><i class="bi bi-ticket-detailed"></i></span>
-                            <span class="text">Ticket</span>
+                            <span className="icon"><i className="bi bi-ticket-detailed"></i></span>
+                            <span className="text">Ticket</span>
                             </a>
                         </li>
-                        <li class="abas">
+                        <li className="abas">
                             <a href="settings">
-                            <span class="icon"><i class="bi bi-gear"></i></span>
-                            <span class="text">Configuração</span>
+                            <span className="icon"><i className="bi bi-gear"></i></span>
+                            <span className="text">Configuração</span>
                             </a>
                         </li>
                     </ul>

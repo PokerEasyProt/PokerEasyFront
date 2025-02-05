@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Cadastro.css';
 import TopLoggout from '../../Universal/TopLog';
+import axios from 'axios'
+import {toast} from 'react-hot-toast';
+
 
 function Cadastro() {
-  const [botaoSelecionado, setBotaoSelecionado] = useState('botao1'); // Inicializa com o botão "Player" selecionado
 
   const handleButtonClick = (botao) => {
     setBotaoSelecionado(botao);
@@ -12,50 +14,73 @@ function Cadastro() {
 
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate('/Home'); 
-  };
+  
+  
+  const [data, setData] = useState(
+    {
+      name: '',
+      email: '',
+      nick: '',
+      cpf: '',
+      discordId: '',
+      password: ''
+    }
+  )
+
+
+
+  const registerUser = async (e) => {
+    e.preventDefault();
+    const {name, email, nick, cpf, discordId, password} = data
+    try {
+      const {data} = await axios.post('/register', {
+        name, email, nick, cpf, discordId, password
+      })
+      if(data.error){
+        toast.error(data.error) 
+      } else {
+        setData({})
+        toast.success('Conta registrada com sucesso!')
+        navigate('/login')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+
 
   return (
     <div>
       <TopLoggout />
-      <div className={`cadastroForm ${botaoSelecionado === 'botao1' ? 'player' : 'manager'}`}>
+      <form onSubmit={registerUser} className={'cadastroForm'}>
         <h1>Cadastre-se!</h1>
 
-        <div className="CadButtons">
-          <button autoFocus onClick={() => handleButtonClick('botao1')}>Player</button>
-          <button onClick={() => handleButtonClick('botao2')}>Manager</button>
-        </div>
+       
 
         <div className="Cadinputs">
           <p>Nome Completo</p>
-          <input type="text" name="nomeCompleto" id="nomeCompleto" />
+          <input type="text" name="nomeCompleto" id="nomeCompleto" value={data.name} onChange={(e) => setData({...data, name: e.target.value})}/>
 
           <p>Email</p>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" value={data.email} onChange={(e) => setData({...data, email: e.target.value})} />
 
           <p>Nick</p>
-          <input type="text" name="nick" id="nick" />
+          <input type="text" name="nick" id="nick" value={data.nick} onChange={(e) => setData({...data, nick: e.target.value})}/>
 
           <p>CPF</p>
-          <input type="text" name="cpf" id="cpf" />
+          <input type="text" name="cpf" id="cpf" value={data.cpf} onChange={(e) => setData({...data, cpf: e.target.value})}/>
 
           <p>Discord ID</p>
-          <input type="text" name="DsID" id="DsID" />
-
-          <div className={`DiscordServerID ${botaoSelecionado === 'botao2' ? 'show' : 'hide'}`}>
-            <p>DiscordServerID</p>
-            <input type="text" name="discordServerId" id="discordServerId" />
-          </div>
+          <input type="text" name="DsID" id="DsID" value={data.discordId} onChange={(e) => setData({...data, discordId: e.target.value})}/>
 
           <p>Senha</p>
-          <input type="password" name="senha" id="senha" />
+          <input type="password" name="senha" id="senha" value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
 
-          <p>Confirme a senha</p>
-          <input type="password" name="confirmaSenha" id="confirmaSenha" />
+
         </div>
-        <button onClick={handleClick}>Cadastrar-se</button>
-      </div>
+        <button type='submit'>Cadastrar-se</button>
+      </form>
     </div>
   );
 }

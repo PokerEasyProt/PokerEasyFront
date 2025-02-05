@@ -10,7 +10,7 @@ function Top(){
             </div>
                 <div className="Topbuttons">
                     <button>Solicitações</button>
-                    <button><i class="bi bi-bell-fill"></i></button>
+                    <button><i className="bi bi-bell-fill"></i></button>
                     <div className='TopIcon'>
                         <img src={Icon} width={55} height={55} alt="icone de perfil" />
                     </div>
