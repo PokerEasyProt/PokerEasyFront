@@ -34,7 +34,7 @@ function Teamcreate() {
     return (
         <div>
             <Top />
-            <div className="Teamcreate">
+            <div className="Teamcreate b">
                 <header>
                     <br />
                     <h1>Crie seu time!</h1>

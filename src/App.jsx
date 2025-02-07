@@ -7,10 +7,12 @@ import HomePlayer from './Player/HomePlayer.jsx';
 import Teamcreate from './Manager/Teamcreate.jsx'
 import TeamView from './Manager/TeamView.jsx'
 import Login from './Cadastro/Login/Login.jsx'
+import e404 from './Universal/e404.jsx';
 
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
-import { UserContextProvider } from '../context/userContext.jsx';
+import { UserContextProvider} from '../context/userContext.jsx';
+import WithAuth from "./util/withAuth"; // Importação correta
 
 
 
@@ -30,14 +32,18 @@ function App() {
 
 
           {/* //manager route */}
-          <Route path='/' Component={Home}/>
+          {/*<Route path='/' Component={Home}/> */}
+          <Route element={<WithAuth />}>
+          <Route path="/" element={<Home />} />
+       
+
           <Route path='/teamcreate' Component={Teamcreate}/>
           <Route path='/teamview' Component={TeamView}/>
 
-
+          </Route>
           {/* //player route */}
           <Route path='/homep' Component={HomePlayer}/>
-          <Route path='*' Component={Cadastro}/>
+          <Route path='*' Component={e404}/>
         </Routes>
       </BrowserRouter>
     </UserContextProvider>

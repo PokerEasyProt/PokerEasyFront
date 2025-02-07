@@ -44,7 +44,7 @@ function Login(){
     return(
         <div>
             <TopLog/>
-            <form onSubmit={LoginUser} className="Login">
+            <form onSubmit={LoginUser} className="Login b">
                 <h1>Faça Login agora!</h1>
                 <div className="LoginInputs">
                     <p>Email</p>

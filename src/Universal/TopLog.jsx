@@ -13,7 +13,7 @@ function TopLoggout(){
     }
 
     return(
-        <header className='Top'>
+        <header className='Top b'>
             <div className="TopLogo">
                 <h1>PokerEasy</h1>
             </div>

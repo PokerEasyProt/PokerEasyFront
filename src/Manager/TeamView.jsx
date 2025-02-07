@@ -10,7 +10,7 @@ function TeamView(){
         <div>
             <Nav/>
             <Top/>
-            <div className="TeamView">
+            <div className="TeamView b">
                 <div className="leftTV">
                     <div className="upTV">
                         <img src={adan} alt="" />

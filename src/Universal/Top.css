@@ -54,4 +54,17 @@
     border-radius: 55%;
     border: solid 1px rgb(255, 222, 74);
     cursor: pointer;
+
+    
+}
+
+
+.TopIcon button{
+    
+        border: none;
+        cursor: pointer;
+        transition: none;
+        background-color: rgb(27, 27, 27);
+        border-radius: 50px;
+    
 }

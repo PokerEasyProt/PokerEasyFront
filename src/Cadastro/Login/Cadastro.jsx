@@ -53,7 +53,7 @@ function Cadastro() {
   return (
     <div>
       <TopLoggout />
-      <form onSubmit={registerUser} className={'cadastroForm'}>
+      <form onSubmit={registerUser} className={'cadastroForm b'}>
         <h1>Cadastre-se!</h1>
 
        

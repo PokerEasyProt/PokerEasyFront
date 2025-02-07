@@ -33,7 +33,7 @@ function Home(){
                     </div>
                     
                 ) : (
-                    <div className="square">
+                    <div className="square b">
                         <h1>Criar um time</h1>
                         <div className="squareIcon">
                             <button onClick={handleNavigate}><i className="bi bi-plus-square"></i></button>
