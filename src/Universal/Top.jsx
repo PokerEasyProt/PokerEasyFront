@@ -2,6 +2,7 @@ import './Top.css'
 import Adan from '../imgs/adan.png'
 import Icon from '../imgs/icon.png'
 import ProfileMenu from './ProfileMenu'
+import NotfMenu from './NotfMenu'
 
 function Top(){
     return(
@@ -12,7 +13,7 @@ function Top(){
                 <div className="Topbuttons">
                     <div className="b">
                     <button>Solicitações</button>
-                    <button><i className="bi bi-bell-fill"></i></button>
+                    <NotfMenu/>
                     </div>
                     <div className='TopIcon'>
                     <ProfileMenu/>                        

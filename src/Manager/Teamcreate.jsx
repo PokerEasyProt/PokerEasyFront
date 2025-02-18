@@ -1,42 +1,97 @@
 import Top from "../Universal/Top";
-import './Teamcreate.css';
+import "./Teamcreate.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../context/userContext";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 function Teamcreate() {
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
 
-    // Estado para gerenciar os campos adicionados
-    const [accounts, setAccounts] = useState([]);
+    // Estado para armazenar os dados do time
+    const [data, setData] = useState({
+        name: "",
+        description: "",
+        discordId: "",
+        sigla: "",
+        icon: null,
+        accounts: []
+    });
 
-    // Função para adicionar um novo campo
+    // Adicionar nova conta vinculada
     const addAccountField = () => {
-        setAccounts([...accounts, { name: "", platform: "" }]);
+        setData({ ...data, accounts: [...data.accounts, { name: "", platform: "" }] });
     };
 
-    // Função para manipular alterações nos campos
+    // Atualizar dados das contas vinculadas
     const handleFieldChange = (index, field, value) => {
-        const updatedAccounts = [...accounts];
+        const updatedAccounts = [...data.accounts];
         updatedAccounts[index][field] = value;
-        setAccounts(updatedAccounts);
+        setData({ ...data, accounts: updatedAccounts });
     };
 
-    // Função para remover um campo
+    // Remover uma conta vinculada
     const removeAccountField = (index) => {
-        const updatedAccounts = accounts.filter((_, i) => i !== index);
-        setAccounts(updatedAccounts);
+        setData({ ...data, accounts: data.accounts.filter((_, i) => i !== index) });
     };
 
-    const click = () => {
-        navigate('/teamview');
+    // Criar time
+    const createTeam = async (e) => {
+        e.preventDefault();
+    
+        if (!user) {
+            toast.error("Usuário não autenticado.");
+            return;
+        }
+    
+        const transformedData = {
+            name: data.name.toLowerCase(),
+            description: data.description,
+            discordId: data.discordId,
+            sigla: data.sigla.toUpperCase(),
+            icon: data.icon,
+            accounts: data.accounts,
+            owner: user._id
+        };
+    
+        try {
+            const token = localStorage.getItem("token"); // Ou onde estiver armazenado
+    
+            const response = await axios.post("/create", transformedData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+    
+            if (response.data.error) {
+                toast.error(response.data.error);
+            } else {
+                setData({
+                    name: "",
+                    description: "",
+                    discordId: "",
+                    sigla: "",
+                    icon: null,
+                    accounts: []
+                });
+                toast.success("Time criado com sucesso!");
+                navigate("/teamview");
+            }
+        } catch (error) {
+            console.error("Erro ao criar o time:", error);
+            toast.error("Erro ao criar o time.");
+        }
     };
 
     return (
         <div>
             <Top />
-            <div className="Teamcreate b">
+            <form onSubmit={createTeam} className="Teamcreate b">
                 <header>
-                    <br />
                     <h1>Crie seu time!</h1>
                 </header>
                 <section className="TCform">
@@ -44,27 +99,29 @@ function Teamcreate() {
                         <h2>Informações gerais</h2>
 
                         <p>Nome do time</p>
-                        <input type="text" />
+                        <input type="text" value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} />
 
                         <p>Descrição</p>
-                        <input type="text" />
+                        <input type="text" value={data.description} onChange={(e) => setData({ ...data, description: e.target.value })} />
 
                         <p>ID Server Discord</p>
-                        <input type="text" />
+                        <input type="text" value={data.discordId} onChange={(e) => setData({ ...data, discordId: e.target.value })} />
 
                         <p>Sigla</p>
-                        <input type="text" />
+                        <input type="text" value={data.sigla} onChange={(e) => setData({ ...data, sigla: e.target.value })} />
 
-                        <p>Icone do Time</p>
-                        <input type="file" />
+                        <p>Ícone do Time</p>
+                        <input type="text" onChange={(e) => setData({ ...data, icon: e.target.files[0] })} />
                     </div>
+
                     <div className="TCrules">
                         <h2>Tipos de conta/Plataforma</h2>
-                        <button id="BTadd" onClick={addAccountField}>
-                        <p>Adicionar conta</p><i className="bi bi-plus-square"></i>
+                        <button id="BTadd" type="button" onClick={addAccountField}>
+                            <p>Adicionar conta</p>
+                            <i className="bi bi-plus-square"></i>
                         </button>
-                        {/* Renderizar dinamicamente os campos adicionados */}
-                        {accounts.map((account, index) => (
+
+                        {data.accounts.map((account, index) => (
                             <div key={index} className="TCaccount">
                                 <input
                                     type="text"
@@ -82,18 +139,18 @@ function Teamcreate() {
                                     <option value="Crypto">Crypto</option>
                                     <option value="Telefone">Telefone</option>
                                 </select>
-                                {/* Botão para remover o campo */}
-                                <button onClick={() => removeAccountField(index)} className="remove-btn">
-                                <i class="bi bi-trash"></i>
+                                <button type="button" onClick={() => removeAccountField(index)} className="remove-btn">
+                                    <i className="bi bi-trash"></i>
                                 </button>
                             </div>
                         ))}
                     </div>
+
                     <div className="TCbutton">
-                        <button onClick={click} type="submit">Criar time</button>
+                        <button type="submit">Criar time</button>
                     </div>
                 </section>
-            </div>
+            </form>
         </div>
     );
 }

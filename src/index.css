@@ -29,6 +29,24 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+
+
+  
+
+  background-color: #000000;
+opacity: 1;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #000000 10px ), repeating-linear-gradient( #36341e55, #36341e );
+
+
+
+  /* background:
+      conic-gradient(at 16.5px calc(100% - 16.5px),#0000 270deg,#0d0d0d 0) calc(16.5px + 12.375px) 0,
+      linear-gradient(#ffe428 16.5px,#0000 0) 0 12.375px,
+      conic-gradient(at 16.5px calc(100% - 16.5px),#0000 90deg,#ffe428 0 180deg, #0d0d0d 0),
+      #575757;
+background-size: calc(2*(16.5px + 12.375px)) calc(2*(16.5px + 12.375px)); */
+
 }
 
 

@@ -10,7 +10,7 @@ export function UserContextProvider({children}){
         if(!user){
             
             axios.get('/profile').then(({data}) => {
-                console.log("baby im wothing")
+                console.log("baby im worthing")
                 setUser(data)
             })
         }

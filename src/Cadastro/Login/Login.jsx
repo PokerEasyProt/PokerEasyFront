@@ -25,10 +25,11 @@ function Login(){
     const LoginUser = async (e) => {
         e.preventDefault()
         const {email, password} = data
+
+
         try {
             const {data} = await axios.post('/login', {
-                email,
-                password
+                email, password
             });
             if(data.error){
                 toast.error(data.error)
@@ -48,12 +49,12 @@ function Login(){
                 <h1>Faça Login agora!</h1>
                 <div className="LoginInputs">
                     <p>Email</p>
-                    <input type="email" value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
+                    <input type="text" value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
                     <p>Senha</p>
                     <input type="password" value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
                 <button type='submit'>Login</button>
                 </div>
-                <p>Não tem uma conta ainda? <a href="/cadastro">Cadatre-se agora mesmo</a></p>
+                <p>Não tem uma conta ainda? <a href="/cadastro">Cadatre-se!</a></p>
             </form>
         </div>
     )

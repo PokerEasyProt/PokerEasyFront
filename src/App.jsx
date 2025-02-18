@@ -3,11 +3,11 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Cadastro from './Cadastro/Login/Cadastro.jsx'
 import NotFound from './Error/NotFound.jsx';
 import Home from './Manager/Home.jsx';
-import HomePlayer from './Player/HomePlayer.jsx';
 import Teamcreate from './Manager/Teamcreate.jsx'
 import TeamView from './Manager/TeamView.jsx'
 import Login from './Cadastro/Login/Login.jsx'
 import e404 from './Universal/e404.jsx';
+import Teste from './Teste/teste.jsx';
 
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
@@ -29,20 +29,23 @@ function App() {
           {/* //General route */}
           <Route path='/cadastro' Component={Cadastro}/>
           <Route path='/login' Component={Login}/>
+          <Route path='/teste' Component={Teste}/>
 
 
           {/* //manager route */}
           {/*<Route path='/' Component={Home}/> */}
           <Route element={<WithAuth />}>
-          <Route path="/" element={<Home />} />
-       
 
-          <Route path='/teamcreate' Component={Teamcreate}/>
-          <Route path='/teamview' Component={TeamView}/>
+            <Route path="/" element={<Home />} />
+       
+              
+                <Route path='/teamcreate' Component={Teamcreate}/>
+                <Route path='/teamview' Component={TeamView}/>
+              
 
           </Route>
+          
           {/* //player route */}
-          <Route path='/homep' Component={HomePlayer}/>
           <Route path='*' Component={e404}/>
         </Routes>
       </BrowserRouter>
