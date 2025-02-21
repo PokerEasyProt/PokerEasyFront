@@ -36,11 +36,9 @@ function App() {
           {/*<Route path='/' Component={Home}/> */}
           <Route element={<WithAuth />}>
 
-            <Route path="/" element={<Home />} />
-       
-              
-                <Route path='/teamcreate' Component={Teamcreate}/>
-                <Route path='/teamview' Component={TeamView}/>
+            <Route path="/" element={<Home />} /> 
+            <Route path='/teamcreate' element={<Teamcreate/>}/>
+            <Route path='/teamview' Component={TeamView}/>
               
 
           </Route>

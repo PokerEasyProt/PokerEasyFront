@@ -1,5 +1,7 @@
+import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 import Top from "../Universal/Top";
 import Nav from '../Universal/Nav';
 import './Home.css';
@@ -9,18 +11,33 @@ import { UserContext } from "../../context/userContext";
 function Home(){
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
+    const [team, setTeam] = useState(null); // null para indicar carregamento inicial
 
-    const [team, setTeam] = useState(false); // Substituir por um fetch real depois
+    useEffect(() => {
+        if (user) {
+            checkIfOwner();
+        }
+    }, [user]); // Chama a função quando `user` for carregado
+
+    const checkIfOwner = async () => {
+        try {
+            const response = await axios.get(`/team/owner/${user.id}`);
+            if (response.data.hasTeam) {
+                setTeam(true);
+            } else {
+                setTeam(false);
+            }
+        } catch (error) {
+            console.error("Erro ao verificar owner:", error);
+        }
+    };
 
     const handleNavigate = () => {
         navigate('/teamcreate');
     };
 
-    
-
-
     if (!user) {
-        return <p>Carregando... Tente recarregar a pagina</p>; // Evita erro caso o user ainda não esteja carregado
+        return <p>Carregando... Tente recarregar a página</p>; // Evita erro caso `user` ainda não tenha carregado
     }
 
     return (
@@ -31,7 +48,9 @@ function Home(){
 
             {user.cargo === "manager" ? (
                 <div className="gridT">
-                    {team ? (
+                    {team === null ? (
+                        <p>Verificando time...</p> // Exibe um aviso enquanto carrega
+                    ) : team ? (
                         <SelectTeam />
                     ) : (
                         <div className="square b">

@@ -16,7 +16,7 @@ function Teamcreate() {
         description: "",
         discordId: "",
         sigla: "",
-        icon: null,
+        icon: "",
         accounts: []
     });
 
@@ -37,55 +37,37 @@ function Teamcreate() {
         setData({ ...data, accounts: data.accounts.filter((_, i) => i !== index) });
     };
 
-    // Criar time
+    // Criar time (Função corrigida)
     const createTeam = async (e) => {
         e.preventDefault();
     
-        if (!user) {
-            toast.error("Usuário não autenticado.");
-            return;
-        }
-    
-        const transformedData = {
-            name: data.name.toLowerCase(),
-            description: data.description,
-            discordId: data.discordId,
-            sigla: data.sigla.toUpperCase(),
-            icon: data.icon,
-            accounts: data.accounts,
-            owner: user._id
-        };
-    
         try {
-            const token = localStorage.getItem("token"); // Ou onde estiver armazenado
+            const formData = new FormData();
+            formData.append("name", data.name);
+            formData.append("description", data.description);
+            formData.append("discordId", data.discordId);
+            formData.append("sigla", data.sigla);
+            formData.append("icon", data.icon);
+            formData.append("owner", user.id);
+            formData.append("accounts", JSON.stringify(data.accounts));
     
-            const response = await axios.post("/create", transformedData,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-    
-            if (response.data.error) {
-                toast.error(response.data.error);
-            } else {
-                setData({
-                    name: "",
-                    description: "",
-                    discordId: "",
-                    sigla: "",
-                    icon: null,
-                    accounts: []
-                });
-                toast.success("Time criado com sucesso!");
-                navigate("/teamview");
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
             }
+    
+            const response = await axios.post('/team', formData, {
+                headers: { "Content-Type": "multipart/form-data" }
+            });
+    
+            toast.success("Time criado com sucesso!");
+            navigate("/");
         } catch (error) {
-            console.error("Erro ao criar o time:", error);
+            console.error(error);
             toast.error("Erro ao criar o time.");
         }
     };
+    
+    
 
     return (
         <div>
@@ -111,7 +93,7 @@ function Teamcreate() {
                         <input type="text" value={data.sigla} onChange={(e) => setData({ ...data, sigla: e.target.value })} />
 
                         <p>Ícone do Time</p>
-                        <input type="text" onChange={(e) => setData({ ...data, icon: e.target.files[0] })} />
+                        <input type="text" value={data.icon} onChange={(e) => setData({ ...data, icon: e.target.value })} />
                     </div>
 
                     <div className="TCrules">
@@ -156,3 +138,54 @@ function Teamcreate() {
 }
 
 export default Teamcreate;
+
+
+
+// const createTeam = async (e) => {
+    //     e.preventDefault();
+    
+    //     if (!user) {
+    //         toast.error("Usuário não autenticado.");
+    //         return;
+    //     }
+    
+    //     const transformedData = {
+    //         name: data.name.toLowerCase(),
+    //         description: data.description,
+    //         discordId: data.discordId,
+    //         sigla: data.sigla.toUpperCase(),
+    //         icon: data.icon,
+    //         accounts: data.accounts,
+    //         owner: user._id
+    //     };
+    
+    //     try {
+    //         const token = localStorage.getItem("token"); // Ou onde estiver armazenado
+    
+    //         const response = await axios.post("/create", transformedData,
+    //             {
+    //                 headers: {
+    //                     Authorization: `Bearer ${token}`
+    //                 }
+    //             }
+    //         );
+    
+    //         if (response.data.error) {
+    //             toast.error(response.data.error);
+    //         } else {
+    //             setData({
+    //                 name: "",
+    //                 description: "",
+    //                 discordId: "",
+    //                 sigla: "",
+    //                 icon: null,
+    //                 accounts: []
+    //             });
+    //             toast.success("Time criado com sucesso!");
+    //             navigate("/teamview");
+    //         }
+    //     } catch (error) {
+    //         console.error("Erro ao criar o time:", error);
+    //         toast.error("Erro ao criar o time.");
+    //     }
+    // };
