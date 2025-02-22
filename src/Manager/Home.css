@@ -40,8 +40,17 @@
 }
 
 
+ul{
+    list-style: none;
+}
+.teamsHomeP{
+    background-color: rgb(27, 27, 27);
+    padding: 5px;
+    border-radius: 25px;
+    border: solid 1px rgb(255, 222, 74);
+}
 
-
+strong{color: rgb(255, 222, 74)}
 
 
 @keyframes pulse {

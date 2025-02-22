@@ -8,6 +8,8 @@ import TeamView from './Manager/TeamView.jsx'
 import Login from './Cadastro/Login/Login.jsx'
 import e404 from './Universal/e404.jsx';
 import Teste from './Teste/teste.jsx';
+import HomeP from './Player/HomeP.jsx'
+import HomeM from './Manager/HomeM.jsx'
 
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
@@ -36,7 +38,7 @@ function App() {
           {/*<Route path='/' Component={Home}/> */}
           <Route element={<WithAuth />}>
 
-            <Route path="/" element={<Home />} /> 
+            <Route path="/" element={<Home />} />
             <Route path='/teamcreate' element={<Teamcreate/>}/>
             <Route path='/teamview' Component={TeamView}/>
               
