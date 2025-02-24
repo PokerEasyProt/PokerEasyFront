@@ -1,0 +1,45 @@
+.allPlayers{
+    border: solid 1px white;
+    display: flex;
+    justify-content: center;
+    width: 1500px;
+    margin-left: -70px;
+    height: 750px;
+    margin-top: 60px;
+}
+
+.leftOne{
+    border: solid 1px white;
+    width: 40%;
+}
+
+.seta{
+    height: 10%;
+
+    display: flex;
+}
+
+.pesquisa{
+    border: solid 1px white;
+    height: 20%;
+}
+
+.players{
+    border: solid 1px white;
+    height: 70%;
+}
+
+.rightOne{
+    border: solid 1px white;
+    width: 60%;
+}
+
+.detalhes{
+    border: solid 1px white;
+    height: 15%;
+}
+
+.boxPlayer{
+    border: solid 1px white;
+    height: 85%;
+}

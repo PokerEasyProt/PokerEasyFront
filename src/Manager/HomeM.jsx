@@ -7,6 +7,7 @@ import Nav from '../Universal/Nav';
 import './Home.css';
 import SelectTeam from '../Universal/SelectTeam';
 import { UserContext } from "../../context/userContext";
+import { TypeAnimation } from 'react-type-animation';
 
 function Home(){
     const navigate = useNavigate();
@@ -33,21 +34,65 @@ function Home(){
         }
     };
 
-
     if (!user) {
         return <p>Carregando... Tente recarregar a página</p>;
     }
 
     return (
-        <div>
+        <div className='allHomeM'>
             <Nav />
             <Top />
-            <h1 className='hello'>Olá, {user.name}</h1>
+            <TypeAnimation
+                sequence={[`Olá, ${user.name}!`, 1000]}
+                wrapper="h1"
+                cursor={true}
+                repeat={0}
+                className='hello demo'
+            />
             <div className="gridT">
                     {team === null ? (
                         <p>Verificando time...</p>
                     ) : team ? (
+                        <div>
                         <SelectTeam />
+                        <div className='squareGrid'>
+                        
+                        <button  onClick={() => navigate('/players')} className="square b">
+                            <h1>Painel de players</h1>
+                            <div className="squareIcon">
+                            </div>
+                        </button>
+                        <button className="square b">
+                            <h1>Criar um time</h1>
+                            <div className="squareIcon">
+                            </div>
+                        </button>
+                        <button className="square b">
+                            <h1>Criar um time</h1>
+                            <div className="squareIcon">
+                            </div>
+                        </button>
+                        </div>
+                        <div className='squareGrid'>
+                        
+                        <button className="square b">
+                            <h1>Criar um time</h1>
+                            <div className="squareIcon">
+                            </div>
+                        </button>
+                        <button className="square b">
+                            <h1>Criar um time</h1>
+                            <div className="squareIcon">
+                            </div>
+                        </button>
+                        <button className="square b">
+                            <h1>Criar um time</h1>
+                            <div className="squareIcon">
+                            </div>
+                        </button>
+                        </div>
+                        </div>
+                        
                     ) : (
                         <div className="square b">
                             <h1>Criar um time</h1>
@@ -57,6 +102,7 @@ function Home(){
                                 </button>
                             </div>
                         </div>
+                        
                     )}
                 </div>
         </div>

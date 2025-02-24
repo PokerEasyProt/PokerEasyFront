@@ -1,3 +1,7 @@
+.allHomeM{
+    margin-top: 100px;
+}
+
 .gridT{
     width: 1300px;
     flex-wrap: wrap;
@@ -39,6 +43,35 @@
     }
 }
 
+.squareGrid{
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    font-size: 36px;
+    h1{
+        transition: 1s;
+    }
+    button{
+        border:none;
+        
+    }
+    button:hover{
+        
+        display: flex;
+        border: solid 1px rgb(255, 222, 74);
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        h1{
+            transition: 1s;
+            display: flex;
+            font-size: 40px;
+            letter-spacing: 1px;
+        }
+        
+    }
+}
 
 ul{
     list-style: none;

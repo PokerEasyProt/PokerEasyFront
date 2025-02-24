@@ -111,11 +111,11 @@ export default Home
 //                     ) : (
 //                         <div className="square b">
 //                             <h1>Criar um time</h1>
-//                             <div className="squareIcon">
-//                                 <button onClick={() => navigate('/teamcreate')}>
-//                                     <i className="bi bi-plus-square"></i>
-//                                 </button>
-//                             </div>
+                            // <div className="squareIcon">
+                            //     <button onClick={() => navigate('/teamcreate')}>
+                            //         <i className="bi bi-plus-square"></i>
+                            //     </button>
+                            // </div>
 //                         </div>
 //                     )}
 //                 </div>

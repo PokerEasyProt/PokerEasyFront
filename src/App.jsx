@@ -10,6 +10,7 @@ import e404 from './Universal/e404.jsx';
 import Teste from './Teste/teste.jsx';
 import HomeP from './Player/HomeP.jsx'
 import HomeM from './Manager/HomeM.jsx'
+import Players from './Manager/Players.jsx'
 
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
@@ -41,8 +42,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path='/teamcreate' element={<Teamcreate/>}/>
             <Route path='/teamview' Component={TeamView}/>
-              
-
+            <Route path='/players' element={<Players/>}/>
+                 
           </Route>
           
           {/* //player route */}
