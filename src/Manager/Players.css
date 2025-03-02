@@ -18,8 +18,15 @@
 }
 
 .pesquisa{
-    border: solid 1px white;
     height: 12%;
+    display: flex;
+    justify-content: center;
+
+    input{
+        margin-top: 40px;
+        width: 70%;
+        height: 30px;
+    }
 }
 
 .players{
@@ -68,7 +75,7 @@
 }
 
 .rightOne{
-    border: solid 1px white;
+    
     width: 60%;
 }
 
@@ -84,6 +91,9 @@
     display: flex;
     flex-wrap: wrap;
     align-items: start;
+    gap: 0;
+    margin: 0;
+
 
     p{
         width: 100%;

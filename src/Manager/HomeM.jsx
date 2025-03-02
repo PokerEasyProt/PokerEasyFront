@@ -62,13 +62,13 @@ function Home(){
                             <div className="squareIcon">
                             </div>
                         </button>
-                        <button className="square b">
-                            <h1>Criar um time</h1>
+                        <button onClick={() => navigate('/operation')} className="square b">
+                            <h1>Operações</h1>
                             <div className="squareIcon">
                             </div>
                         </button>
-                        <button className="square b">
-                            <h1>Criar um time</h1>
+                        <button onClick={() => navigate('/caixas')} className="square b">
+                            <h1>Caixas</h1>
                             <div className="squareIcon">
                             </div>
                         </button>

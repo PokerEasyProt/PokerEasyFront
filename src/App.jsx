@@ -11,6 +11,8 @@ import Teste from './Teste/teste.jsx';
 import HomeP from './Player/HomeP.jsx'
 import HomeM from './Manager/HomeM.jsx'
 import Players from './Manager/Players.jsx'
+import Operation from './Manager/Operation.jsx'
+import Caixas from './Manager/Caixas.jsx';
 
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
@@ -43,6 +45,8 @@ function App() {
             <Route path='/teamcreate' element={<Teamcreate/>}/>
             <Route path='/teamview' Component={TeamView}/>
             <Route path='/players' element={<Players/>}/>
+            <Route path='/operation' element={<Operation/>}/>
+            <Route path='/caixas' element={<Caixas/>}/>
                  
           </Route>
           

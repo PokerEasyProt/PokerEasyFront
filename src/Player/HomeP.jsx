@@ -62,11 +62,13 @@ function Home() {
                 name: user.name,
                 email: user.email,
                 nick: platformAccounts.nick,
+                cpf: user.cpf,
                 accounts: Object.entries(platformAccounts)
                     .filter(([key]) => key !== "nick")
-                    .map(([platform, value]) => ({
+                    .map(([value , platform]) => ({
                         platform,
                         value
+                        
                     }))
             });
 

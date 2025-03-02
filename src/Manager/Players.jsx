@@ -8,8 +8,10 @@ import icon from '../imgs/adan.png';
 
 function Players() {
     const [players, setPlayers] = useState([]);
+    const [filteredPlayers, setFilteredPlayers] = useState([]); // Jogadores filtrados pela pesquisa
     const [teamId, setTeamId] = useState(""); // Pega o ID do time do manager depois
     const [selectedPlayer, setSelectedPlayer] = useState(null); // Guarda o player selecionado
+    const [searchTerm, setSearchTerm] = useState(""); // Termo de pesquisa
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,6 +19,7 @@ function Players() {
             try {
                 const response = await axios.get(`/team/players/${teamId}`, { withCredentials: true });
                 setPlayers(response.data);
+                setFilteredPlayers(response.data); // Inicializa a lista filtrada
             } catch (error) {
                 console.error("Erro ao buscar jogadores:", error);
             }
@@ -50,6 +53,20 @@ function Players() {
         setSelectedPlayer(player); // Define o player clicado
     };
 
+    const handleSearch = (e) => {
+        const term = e.target.value.toLowerCase();
+        setSearchTerm(term);
+
+        const filtered = players.filter(player =>
+            player.name.toLowerCase().includes(term) ||
+            player.nick.toLowerCase().includes(term) ||
+            player.email.toLowerCase().includes(term) ||
+            player.cpf.includes(term)
+        );
+
+        setFilteredPlayers(filtered);
+    };
+
     return (
         <div>
             <Nav />
@@ -60,11 +77,16 @@ function Players() {
                         <button onClick={() => navigate('/')}>Voltar</button>
                     </div>
                     <div className="pesquisa">
-                        <h1>Pesquisa</h1>
+                        <input
+                            type="text"
+                            placeholder="Pesquisar jogador..."
+                            value={searchTerm}
+                            onChange={handleSearch}
+                        />
                     </div>
                     <div className="players">
-                        {players.length > 0 ? (
-                            players.map((player) => (
+                        {filteredPlayers.length > 0 ? (
+                            filteredPlayers.map((player) => (
                                 <div
                                     key={player._id}
                                     className={`player-card ${selectedPlayer?._id === player._id ? 'selected' : ''}`}
@@ -84,24 +106,18 @@ function Players() {
                 </div>
                 <div className="rightOne">
                     <div className="detalhes">
-                        {selectedPlayer ? (
-                            <>
-                                <h1>{selectedPlayer.name}</h1>
-                                
-                            </>
-                        ) : (
-                            <h1>Selecione um jogador</h1>
-                        )}
+                        <h1>{selectedPlayer.name}</h1>
                     </div>
                     <div className="boxPlayer">
-                    {selectedPlayer ? (
+                        
+                        {selectedPlayer ? (
                             <>
                                 <p>Nick: {selectedPlayer.nick}</p>
                                 <p>CPF: {selectedPlayer.cpf}</p>
                                 <p>Email: {selectedPlayer.email}</p>
                             </>
                         ) : (
-                            <h1>Detalhes</h1>
+                            <h1>Selecione um jogador</h1>
                         )}
                     </div>
                 </div>
