@@ -22,24 +22,32 @@ function Login(){
       )
     
     const LoginUser = async (e) => {
-        e.preventDefault()
-        const {email, password} = data
-
+    e.preventDefault();
+    const { email, password } = data;
 
         try {
-            const {data} = await axios.post('/login', {
-                email, password
-            },{ withCredentials: true });
-            if(data.error){
-                toast.error(data.error)
-            }else{
-                setData({})
-                navigate('/')
+            const { data } = await axios.post('/login', { email, password });
+    
+            if (data.error) {
+                toast.error(data.error);
+            } else {
+                setData({});
+                // 🚀 Chama o /profile depois do login
+                axios.get('/profile', { withCredentials: true })
+                    .then(response => {
+                        console.log('Perfil carregado:', response.data);
+                        setUser(response.data); // Atualiza o UserContext
+                        navigate('/'); // Redireciona após atualizar o perfil
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar perfil:', error);
+                    });
             }
         } catch (error) {
-            
+            console.error('Erro ao fazer login:', error);
         }
-    }
+    };
+
 
     return(
         <div>
