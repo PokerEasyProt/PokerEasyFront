@@ -3,8 +3,10 @@ import axios from "axios";
 import "./Operation.css";
 import Nav from "../Universal/Nav";
 import Top from "../Universal/Top";
+import { useNavigate } from "react-router-dom";
 
 function Operation() {
+    const navigate = useNavigate();
     const [players, setPlayers] = useState([]);
     const [boxes, setBoxes] = useState([]);
     const [teamId, setTeamId] = useState("");
@@ -88,7 +90,14 @@ function Operation() {
         <div>
             <Nav />
             <Top />
-            <form onSubmit={handleSubmit}>
+            <div className="seta b">
+                        <button onClick={() => navigate('/')}>Voltar</button>
+                    </div>
+            <div >
+                
+            <form className="allOperations 
+            cadastroForm b" onSubmit={handleSubmit}>
+                <h1>Realizar operação</h1>
                 <label>Tipo de Operação:</label>
                 <select name="type" value={operation.type} onChange={handleChange} required>
                     <option value="">Selecione...</option>
@@ -130,7 +139,8 @@ function Operation() {
           ))
         : <option disabled>Nenhuma caixa encontrada</option>}
 </select>
-                <label>Valor:</label>
+                <div className="moeda">
+                <label>Valor: </label>
                 <input
                     type="number"
                     name="amount"
@@ -139,15 +149,17 @@ function Operation() {
                     required
                 />
 
-                <label>Moeda:</label>
+                <label>Moeda: </label>
                 <select name="currency" value={operation.currency} onChange={handleChange} required>
                     <option value="">Selecione...</option>
                     <option value="BRL">Real (BRL)</option>
                     <option value="USD">Dólar (USD)</option>
                 </select>
+                </div>
 
                 <button type="submit">Realizar Operação</button>
             </form>
+            </div>
         </div>
     );
 }

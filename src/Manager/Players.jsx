@@ -106,12 +106,13 @@ function Players() {
                 </div>
                 <div className="rightOne">
                     <div className="detalhes">
-                        <h1>{selectedPlayer.name}</h1>
+                        <h1>Detalhes do jogador</h1>
                     </div>
                     <div className="boxPlayer">
                         
                         {selectedPlayer ? (
                             <>
+                                <p>Nick: {selectedPlayer.name}</p>
                                 <p>Nick: {selectedPlayer.nick}</p>
                                 <p>CPF: {selectedPlayer.cpf}</p>
                                 <p>Email: {selectedPlayer.email}</p>

@@ -1,0 +1,24 @@
+.allOperations{
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    gap: 20px;
+    justify-content: start;
+
+    select{
+        width: 100%;
+    }
+    .moeda{
+        display: flex;
+        select{
+            width: 50%;
+        }
+        input{
+            width: 50%;
+        }
+    }
+    button{
+        display: flex;
+        justify-content: center;
+    }
+}
