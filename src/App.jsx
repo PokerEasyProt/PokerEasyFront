@@ -21,7 +21,7 @@ import WithAuth from "./util/withAuth"; // Importação correta
 
 
 
-axios.defaults.baseURL = 'http://localhost:8000'
+axios.defaults.baseURL = 'https://pokereasy.sazuto.com/'
 axios.defaults.withCredentials = true
 
 
